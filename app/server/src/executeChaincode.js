@@ -19,7 +19,16 @@ const exec = async function() {
     console.log('before');
     var user = await fabricConnect.getUser('user1');
     // console.log('user: ' + user);
-    var tx = await fabricConnect.invoke('mycc', 'create', ['']);
+    var device = {
+        id: '100',
+        manufacturer: 'Hotpoint',
+        status: 1,
+    };
+    // var tx = await fabricConnect.invoke('mycc', 'createDevice', [JSON.stringify(device)]);
+    var response = await fabricConnect.query('mycc', 'getDeviceByID', ['100']);
+    response = JSON.parse(response);
+    console.log('response is ' + response);
+    console.log('id is ' + response.id);
     console.log('end');
 };
 

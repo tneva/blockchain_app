@@ -172,6 +172,30 @@ class FabricConnector {
         });
     }
 
+    async query(chaincodeId, fcn, args) {
+        this.ccId = chaincodeId;
+        this.func = fcn;
+        this.args = args;
+
+        const request = {
+            chaincodeId: this.ccId,
+            fcn: this.func,
+            args: this.args
+        };
+
+        return await this.channel.queryByChaincode(request)
+                     .then((response) => {
+                         if (response[0] instanceof Error) {
+                             console.log('Error with query ' + response[0]);
+                         } else {
+                             return Promise.resolve(response);
+                         }
+                     })
+                     .catch((err) => {
+                         console.log(err);
+                     });
+    }
+
 }
 
 module.exports = FabricConnector;
