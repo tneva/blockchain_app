@@ -12,13 +12,13 @@ install()
 # Instantiate new chaincode to the peer through the fabric CLI
 instantiate() 
 {
-    docker exec cli peer chaincode instantiate -n mycc -v $VERSION -c '{"Args":["createMarble","100","red","small","tom"]}' -C mychannel
+    docker exec cli peer chaincode instantiate -n mycc -v $VERSION -c '{"Args":[""]}' -C mychannel
 }
 
 # Upgrade a new version chaincode to the peer through the fabric CLI
 upgrade() 
 {
-    docker exec cli peer chaincode upgrade -n mycc -v $VERSION -c '{"Args":["createMarble","100","red","small","tom"]}' -C mychannel
+    docker exec cli peer chaincode upgrade -n mycc -v $VERSION -c '{"Args":[""]}' -C mychannel
 }
 
 cd src
