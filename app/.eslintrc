@@ -1,0 +1,16 @@
+ {
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module",
+    "ecmaFeatures": {
+        "jsx": true
+    }
+},
+   "extends": "loopback",
+   "rules": {
+    "max-len": "off",
+    "indent": ["error", 4],
+    "comma-dangle": "off",
+    "no-trailing-spaces": "off"
+  }
+}
