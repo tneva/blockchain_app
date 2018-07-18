@@ -26,13 +26,17 @@ func (t *Chaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {
 // Invoke - main entry point for chaincode requests
 func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 	function, args := stub.GetFunctionAndParameters()
-	fmt.Printf("Invoke called with function %s arguments %v", function, args)
+	fmt.Printf("Invoke called with function %s arguments %v \n", function, args)
+
 	switch function {
-	case "create":
-		fmt.Println("create has been called")
-		//return createMarble(stub, args[0], args[1], args[2], args[3])
+	case "createDevice":
+		fmt.Println("createDevice called")
+		return createDevice(stub, args[0])
+	case "getDeviceByID":
+		fmt.Println("getDeviceByID called")
+		return getDeviceByID(stub, args[0])
 	default:
 		return shim.Error("function not found")
 	}
-	return shim.Success(nil)
+	// return shim.Success(nil)
 }
